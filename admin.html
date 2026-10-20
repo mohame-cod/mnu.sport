@@ -1,0 +1,276 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#102344">
+  <title>لوحة الإدارة | الأنشطة الرياضية</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- تسجيل دخول الإدارة -->
+  <div class="gate" id="gate">
+    <form class="card login-wrap" id="gateForm" novalidate>
+      <img class="gate-logo"
+           src="assets/logo.png"
+           alt="شعار جامعة المنيا الأهلية">
+
+      <h2 id="gateTitle">دخول الإدارة</h2>
+      <p class="sub" id="gateSub">أدخل بيانات الدخول للمتابعة</p>
+
+      <div class="field">
+        <label for="username">اسم المستخدم</label>
+        <input
+          class="control"
+          type="text"
+          id="username"
+          name="username"
+          autocomplete="username"
+          placeholder="أدخل اسم المستخدم"
+          maxlength="50"
+          required
+        >
+      </div>
+
+      <div class="field pw-field">
+        <label for="pw">كلمة المرور</label>
+        <input
+          class="control"
+          type="password"
+          id="pw"
+          name="password"
+          autocomplete="current-password"
+          placeholder="أدخل كلمة المرور"
+          maxlength="128"
+          required
+        >
+      </div>
+
+      <button class="btn btn-primary btn-full"
+              type="submit" id="gateBtn">
+        دخول
+      </button>
+
+      <div class="toast" id="gateMsg" role="alert"></div>
+
+      <p class="private-note">
+        <a href="index.html">← صفحة التسجيل</a>
+      </p>
+    </form>
+  </div>
+
+  <!-- لوحة الإدارة -->
+  <div id="app" hidden>
+    <header class="dashboard-top">
+      <div class="shell">
+        <nav class="nav">
+          <div class="brand">
+            <img class="brand-logo"
+                 src="assets/logo.png"
+                 alt="شعار جامعة المنيا الأهلية">
+            <div>
+              إدارة الأنشطة الرياضية
+              <small>لوحة التحكم</small>
+            </div>
+          </div>
+
+          <div class="nav-links">
+            <a href="index.html">صفحة التسجيل</a>
+            <a href="#exportSection">التصدير</a>
+            <a href="#registrations">الطلبات</a>
+            <button class="btn btn-secondary"
+                    id="logoutBtn" type="button">
+              تسجيل الخروج
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell dashboard">
+      <div class="page-title">
+        <h1>لوحة التحكم</h1>
+        <p>متابعة التسجيلات وتصدير ملفات Excel لكل لعبة ولكل نوع.</p>
+      </div>
+
+      <div class="sec-note">
+        <strong>تنبيه أمني:</strong>
+        تسجيل الدخول هنا حماية للواجهة فقط؛
+        البيانات محفوظة محليًا في المتصفح وليست محمية بخادم.
+      </div>
+
+      <div class="toast" id="adminToast"
+           role="status" aria-live="polite"></div>
+
+      <!-- الإحصائيات -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-top">
+            <span>إجمالي الطلبات</span>
+            <span class="stat-icon">👥</span>
+          </div>
+          <div class="stat-number" id="totalCount">0</div>
+          <div class="stat-foot">كل التسجيلات</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <span>قيد المراجعة</span>
+            <span class="stat-icon">⏳</span>
+          </div>
+          <div class="stat-number" id="pendingCount">0</div>
+          <div class="stat-foot">طلبات محتاجة مراجعة</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <span>مقبول</span>
+            <span class="stat-icon">✅</span>
+          </div>
+          <div class="stat-number" id="acceptedCount">0</div>
+          <div class="stat-foot">طلبات تم قبولها</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <span>مرفوض</span>
+            <span class="stat-icon">❌</span>
+          </div>
+          <div class="stat-number" id="rejectedCount">0</div>
+          <div class="stat-foot">طلبات مرفوضة</div>
+        </div>
+      </section>
+
+      <section class="stats-grid two">
+        <div class="stat-card">
+          <div class="stat-top">
+            <span>البنين</span>
+            <span class="stat-icon">👦</span>
+          </div>
+          <div class="stat-number" id="boysCount">0</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <span>البنات</span>
+            <span class="stat-icon">👧</span>
+          </div>
+          <div class="stat-number" id="girlsCount">0</div>
+        </div>
+      </section>
+
+      <!-- تصدير Excel -->
+      <section class="card" id="exportSection"
+               style="margin-bottom:20px">
+        <h2>تصدير Excel</h2>
+        <p class="sub">
+          ملف مستقل لكل لعبة، وملف للبنين وملف للبنات.
+        </p>
+
+        <div class="export-grid" id="sportExports"></div>
+
+        <div class="export-row">
+          <button class="btn btn-primary"
+                  id="exportBoys" type="button">
+            تصدير البنين
+          </button>
+
+          <button class="btn btn-primary"
+                  id="exportGirls" type="button">
+            تصدير البنات
+          </button>
+
+          <button class="btn btn-secondary"
+                  id="exportAll" type="button">
+            تصدير جميع التسجيلات
+          </button>
+        </div>
+      </section>
+
+      <!-- جدول الطلبات -->
+      <section class="card" id="registrations">
+        <h2>طلبات الطلاب</h2>
+        <p class="sub">
+          الرقم القومي والهاتف مخفيان؛ اضغط «إظهار» لرؤية بيانات الطالب.
+        </p>
+
+        <div class="toolbar">
+          <input class="control"
+                 id="searchInput"
+                 placeholder="بحث بالاسم أو الكلية أو رقم الطلب"
+                 maxlength="100">
+
+          <select class="control" id="statusFilter">
+            <option value="">كل الحالات</option>
+            <option value="قيد المراجعة">قيد المراجعة</option>
+            <option value="مقبول">مقبول</option>
+            <option value="مرفوض">مرفوض</option>
+          </select>
+
+          <select class="control" id="sportFilter">
+            <option value="">كل الألعاب</option>
+          </select>
+
+          <select class="control" id="genderFilter">
+            <option value="">بنين وبنات</option>
+            <option value="بنين">بنين</option>
+            <option value="بنات">بنات</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>رقم الطلب</th>
+                <th>الطالب</th>
+                <th>الرقم القومي</th>
+                <th>الكلية</th>
+                <th>الهاتف</th>
+                <th>النوع</th>
+                <th>الألعاب</th>
+                <th>الحالة</th>
+                <th>الإجراء</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- تأكيد الإجراء -->
+    <div class="modal-backdrop" id="modalBackdrop">
+      <div class="modal">
+        <h2>تأكيد الإجراء</h2>
+        <p id="modalText"></p>
+
+        <div class="modal-actions">
+          <button class="btn btn-primary"
+                  id="confirmAction" type="button">
+            تأكيد
+          </button>
+
+          <button class="btn btn-secondary"
+                  id="cancelAction" type="button">
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      لوحة إدارة الأنشطة الرياضية
+    </footer>
+  </div>
+
+  <script src="assets/lib/xlsx.full.min.js"></script>
+  <script src="common.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

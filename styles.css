@@ -1,0 +1,909 @@
+
+/* =========================================
+   Minia National University
+   Sports Registration System
+   Main Stylesheet
+   ========================================= */
+
+:root {
+  --navy: #0d1f45;
+  --navy-light: #17376b;
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --blue-soft: #eff6ff;
+  --white: #ffffff;
+  --page-bg: #f4f7fc;
+  --text: #17233b;
+  --text-muted: #64748b;
+  --border: #dce4f0;
+  --success: #15803d;
+  --success-bg: #f0fdf4;
+  --danger: #b91c1c;
+  --danger-bg: #fef2f2;
+  --instagram: #e1306c;
+  --radius: 16px;
+  --shadow: 0 12px 35px rgba(13, 31, 69, 0.08);
+  --transition: 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  direction: rtl;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+select,
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* =========================================
+   General Layout
+   ========================================= */
+
+.container {
+  width: min(1120px, calc(100% - 36px));
+  margin-inline: auto;
+}
+
+.main-content {
+  padding-top: 38px;
+  padding-bottom: 56px;
+}
+
+/* =========================================
+   Header
+   ========================================= */
+
+.site-header {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    120deg,
+    var(--navy),
+    var(--navy-light)
+  );
+  color: var(--white);
+  box-shadow: 0 6px 24px rgba(13, 31, 69, 0.12);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 100px;
+  padding-block: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.brand-logo {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.brand h1 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(17px, 2.2vw, 23px);
+  line-height: 1.5;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: #d6e4ff;
+  font-size: 13px;
+}
+
+.status-badge {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  border: 1px solid rgba(187, 247, 208, 0.4);
+  border-radius: 999px;
+  background: rgba(22, 163, 74, 0.15);
+  color: #dcfce7;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 28px;
+  padding: 34px;
+  border: 1px solid #dce8ff;
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      circle at 8% 15%,
+      rgba(96, 165, 250, 0.2),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #ffffff, #edf4ff);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  direction: ltr;
+}
+
+.hero h2 {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-size: clamp(23px, 3vw, 34px);
+  line-height: 1.5;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 2;
+}
+
+/* =========================================
+   Registration Card
+   ========================================= */
+
+.form-card {
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #edf1f7;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 23px;
+}
+
+.section-heading p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.form-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: var(--blue-soft);
+  font-size: 27px;
+}
+
+/* =========================================
+   Form Fields
+   ========================================= */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 8px;
+}
+
+.field > label {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.required {
+  color: var(--danger);
+}
+
+.optional-label {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.control {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 49px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--text);
+  font-size: 14px;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.control::placeholder {
+  color: #9aa7ba;
+  opacity: 1;
+}
+
+.control:hover {
+  border-color: #b4c4dc;
+}
+
+.control:focus {
+  border-color: var(--blue);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+select.control {
+  padding-inline-end: 12px;
+}
+
+.field-hint {
+  margin: -4px 0 4px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* =========================================
+   Sports Selection
+   ========================================= */
+
+.sports-field {
+  margin-top: 28px;
+}
+
+.sports-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.sport-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.sport-option:hover {
+  border-color: #93b4f8;
+  background: #f8faff;
+  transform: translateY(-1px);
+}
+
+.sport-option:has(input:checked) {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+}
+
+.sport-option input {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: var(--blue);
+}
+
+.sport-option span {
+  min-width: 0;
+}
+
+/* =========================================
+   Submit Button
+   ========================================= */
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 54px;
+  margin-top: 28px;
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    opacity var(--transition);
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.26);
+}
+
+.primary-button:active {
+  transform: translateY(0);
+}
+
+.primary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+.privacy-note {
+  margin: 14px 0 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* =========================================
+   Success and Error Messages
+   ========================================= */
+
+.message {
+  margin-top: 22px;
+  padding: 14px 16px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.message.success {
+  border-color: #bbf7d0;
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.message.error {
+  border-color: #fecaca;
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.message.info {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 18px 24px;
+  background: var(--navy);
+  color: var(--white);
+  text-align: center;
+}
+
+.instagram-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  background: linear-gradient(
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(214, 41, 118, 0.2);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.instagram-link:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 22px rgba(214, 41, 118, 0.3);
+}
+
+.instagram-link svg {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+
+.footer-role {
+  max-width: 100%;
+  margin: 0 0 4px;
+  color: #d6e4ff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.8;
+  direction: ltr;
+}
+
+.footer-name {
+  margin: 0;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  direction: ltr;
+}
+
+.footer-university {
+  margin: 5px 0 0;
+  color: #a9bedd;
+  font-size: 12px;
+  direction: ltr;
+}
+
+.footer-copy {
+  width: min(100%, 700px);
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  color: #a9bedd;
+  font-size: 11px;
+}
+
+/* =========================================
+   Admin Dashboard Shared Components
+   ========================================= */
+
+.admin-container {
+  width: min(1400px, calc(100% - 32px));
+  margin-inline: auto;
+  padding-block: 30px;
+}
+
+.admin-card,
+.stat-card,
+.dashboard-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 5px 18px rgba(13, 31, 69, 0.05);
+}
+
+.admin-card,
+.dashboard-card {
+  padding: 24px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  padding: 20px;
+}
+
+.stat-card h3 {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stat-card .stat-number {
+  display: block;
+  margin-top: 8px;
+  color: var(--navy);
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+  white-space: nowrap;
+}
+
+th,
+td {
+  padding: 13px 15px;
+  border-bottom: 1px solid #edf1f7;
+  font-size: 13px;
+}
+
+th {
+  background: #f1f5fb;
+  color: var(--navy);
+  font-weight: 800;
+}
+
+tbody tr:hover {
+  background: #f8faff;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.export-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.export-buttons button,
+.secondary-button {
+  min-height: 40px;
+  padding: 9px 14px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #fff;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 700;
+  transition: background var(--transition);
+}
+
+.export-buttons button:hover,
+.secondary-button:hover {
+  border-color: #a9c2f4;
+  background: var(--blue-soft);
+}
+
+.export-gender-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.export-gender-buttons button {
+  flex: 1;
+  min-width: 90px;
+}
+
+/* =========================================
+   Responsive Design
+   ========================================= */
+
+@media (max-width: 900px) {
+  .sports-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero {
+    padding: 28px;
+  }
+
+  .form-card {
+    padding: 26px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .main-content {
+    padding-top: 20px;
+    padding-bottom: 32px;
+  }
+
+  .header-content {
+    min-height: 82px;
+    gap: 10px;
+    padding-block: 12px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-logo {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    font-size: 13px;
+  }
+
+  .brand h1 {
+    font-size: 15px;
+  }
+
+  .brand p {
+    max-width: 200px;
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  .status-badge {
+    padding: 5px 9px;
+    font-size: 10px;
+  }
+
+  .hero {
+    margin-bottom: 18px;
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .hero h2 {
+    font-size: 23px;
+  }
+
+  .hero p {
+    font-size: 13px;
+  }
+
+  .form-card {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+
+  .section-heading {
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+  }
+
+  .section-heading h2 {
+    font-size: 19px;
+  }
+
+  .section-heading p {
+    font-size: 11px;
+  }
+
+  .form-icon {
+    width: 43px;
+    height: 43px;
+    border-radius: 12px;
+    font-size: 22px;
+  }
+
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .control {
+    min-height: 47px;
+    font-size: 14px;
+  }
+
+  .sports-field {
+    margin-top: 23px;
+  }
+
+  .sports-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .sport-option {
+    min-height: 53px;
+    gap: 7px;
+    padding: 9px;
+    font-size: 11px;
+  }
+
+  .sport-option input {
+    width: 16px;
+    height: 16px;
+  }
+
+  .primary-button {
+    min-height: 51px;
+    margin-top: 23px;
+  }
+
+  .site-footer {
+    padding: 27px 14px 20px;
+  }
+
+  .footer-role {
+    font-size: 11px;
+  }
+
+  .footer-name {
+    font-size: 21px;
+  }
+
+  .admin-container {
+    width: calc(100% - 20px);
+    padding-block: 18px;
+  }
+
+  .admin-card,
+  .dashboard-card {
+    padding: 16px;
+  }
+
+  .stats-grid {
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-card .stat-number {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    width: calc(100% - 18px);
+  }
+
+  .brand p {
+    max-width: 150px;
+  }
+
+  .status-badge {
+    font-size: 9px;
+    padding-inline: 7px;
+  }
+
+  .hero h2 {
+    font-size: 20px;
+  }
+
+  .form-card {
+    padding-inline: 12px;
+  }
+
+  .sports-grid {
+    gap: 7px;
+  }
+
+  .sport-option {
+    padding: 8px 6px;
+    font-size: 10px;
+  }
+}
+
+/* =========================================
+   Reduced Motion Accessibility
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
